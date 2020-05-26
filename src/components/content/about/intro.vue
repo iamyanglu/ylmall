@@ -11,7 +11,7 @@
         data(){
             return {
                 demoList:[
-                    {name:'html简单画布(按下k建下载)',demoPath:'/pro/canvas'}
+                    {name:'html简单画布(按下s建下载)',demoPath:'/pro/canvas'}
                 ]
             }
         }
