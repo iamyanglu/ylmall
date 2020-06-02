@@ -1,6 +1,6 @@
 import  axios from 'axios'
 let request = axios.create({
-    baseURL:'http://127.0.0.1:2000',
+    baseURL:'http://49.235.121.158:2000',
     timeout:5000
 })
 export function putimage(config) {
@@ -12,10 +12,9 @@ export function putimage(config) {
 }
 export function putArt(obj) {
 
-  return   request({
+  return  request({
         url:'/put',
         method:'post',
-
         headers:{
             'Content-type':'application/json'
         },

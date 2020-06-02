@@ -9,6 +9,7 @@ const pro = ()=> import('@/views/pro/pro')
 const log = ()=> import('@/views/log/log')
 const canvas = ()=>import('@/views/demo/canvas')
 const cloudMusic = ()=> import('@/views/demo/cloudmusic')
+const error = ()=>import('@/error')
 
 Vue.use(Router)
 const routes=[
@@ -42,7 +43,7 @@ const routes=[
     },
     {
         path:'/cloudMusic',
-        component:cloudMusic
+        component:error
     }
 ]
 const router = new Router({

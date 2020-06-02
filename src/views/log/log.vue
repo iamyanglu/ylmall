@@ -1,94 +1,117 @@
 <template>
-    <div id="log">
-        <div class="log_box">
-            <input placeholder="User"  v-model="userName" size="20"/>
-            <input placeholder="Uassword" v-model="passWord" size="20" />
-            <a  type="button" @click="login">登陆</a>
+
+    <div class="logCom">
+
+        <div class="logBox">
+            <div class="titLog">Sign In </div>
+            <div class="inputGroup">
+
+                <span><img src="../../assets/img/user.png" /></span> <input placeholder="账号:admin" v-model="user">
+                <span><img src="../../assets/img/password.png" /></span> <input placeholder="密码:admin" v-model="pass" type="password">
+
+
+            </div>
+            <div class="log"><a @click="login">登录</a></div>
         </div>
+
+
+
     </div>
 </template>
 
 <script>
-    import {log} from "../../network/admin";
+   import {log} from "../../network/admin";
 
-    export default {
+   export default {
         name: "log",
         methods:{
-            init(){
-                let log = document.querySelector("#log")
-                log.style.width = document.documentElement.clientWidth+ 'px'
-                log.style.height= document.documentElement.clientHeight - 49 + 'px'
-
-            },
             login(){
                     log({
-                        user:this.userName,
-                        pass:this.passWord
+                        user:this.user,
+                        pass:this.pass
                     }).then(res=>{
-                        if(res.data.code ===1)
-                        {
-                            window.localStorage.setItem('isLog',true);
-                            window.localStorage.setItem('token',res.data.token);
-                            this.$store.commit('log',window.localStorage.getItem('isLog'))
-                            this.$router.replace('/admin')
-                        }
+                       let data = res.data;
+                        console.log(data);
+                        if(data.code  === 0){
+                           window.alert(data.message)
+                       }
+                       else if(data.code === 2){
+                           console.log(res.data);
+
+                       }
+                       else if(data.code === 1)
+                       {
+                           if(data.token){
+                               window.localStorage.setItem('token',data.token)
+
+                               this.$router.replace('/admin')
+                           }
+                       }
                     })
-
             }
-
-        },
-        mounted() {
-            this.init()
         },
         data(){
-
-            return {
-                userName: '',
-                passWord:''
+            return{
+                user:'',
+                pass:'',
+                fromPath:''
             }
         },
         created() {
             this.$emit('loaded')
+          if(this.$route.meta.path)
+          {
+              this.fromPath = this.$route.meta.path
+          }
+
         }
     }
 </script>
 
 <style scoped>
-#log{
-
-   background-image: url("~@/assets/img/logBgc.jpg");
-  height: 1200px;
-}
-    .log_box{
-
-
-        margin: 0 auto;
-        width: 600px;
-        height: 300px;
-
-        transform: translateY(100px);
+    .titLog{
+        font-weight: bold;
+        width: 100%;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-bottom: 1px solid black;
+    }
+    .logCom{
+        width: 100%;
+    }
+    .logBox{
+        width: 400px;
+        height: 500px;
+        margin: 50px auto;
 
     }
-.log_box input{
-    padding-top: 70px;
-    padding-bottom: 0px;
+    .inputGroup {
+        width: 100%;
+    }
+    .inputGroup input{
+        border: none;
+        box-shadow: 0 0 2px #2c3e50;
+        margin-top: 20px;
+        width: 80%;
+        height: 30px;
+    }
+    .inputGroup input:hover{
+        box-shadow: 0 0 2px deepskyblue;
 
-    font-size: 20px;
-
- width: 100%;
-    background: rgba(0,0,0,.0);
-    border-bottom: 1px solid black;
-
-}
-.log_box a{
-    margin: 20px auto;
-    line-height: 50px;
-    text-align: center;
-    font-size: 20px;
-    display: block;
-    box-shadow: 1px 1px #000000;
-    width: 100px;
-    height: 50px;
-    background-color: lightsalmon;
-}
+    }
+    .inputGroup span img{
+        margin-left: 10px;
+        margin-right: 10px;
+        width: 20px;
+        height: 20px;
+    }
+    .log{
+        margin-top: 20px;
+        width:100%;
+        text-align: center;
+        padding-bottom: 20px;
+        cursor: pointer;
+        border-bottom: 1px solid black;
+    }
 </style>

@@ -17,7 +17,7 @@
         components:{ navBarC,navBarF},
         data(){
             return{
-                navList:[{txt:'首页',link:'/index'},{txt:'关于',link:'/pro'},{txt:'其他',link:'/admin'}]
+                navList:[{txt:'首页',link:'/index'},{txt:'Demo',link:'/pro'},{txt:'其他',link:'/admin'}]
             }
         }
     }

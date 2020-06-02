@@ -28,16 +28,19 @@
 
 }
 #navbar:hover{
-    background-color: #eeeeee;}
+    background-color: #eeeeee;
+}
 .nav_center{
-    font-size: 16px;
+    font-size: 16px;;
     flex: 4;
     margin-left: auto;
 
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-end;}
 
-}
+
+
+
     .nav_left{
         width: 10%;
         flex: 1;

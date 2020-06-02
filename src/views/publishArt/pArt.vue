@@ -4,7 +4,7 @@
             <input v-model="label" placeholder="标签请用-隔开">
         </div>
         <mavon-editor ref=md @imgAdd="$imgAdd"  v-model="handbook"/>
-        <form  enctype="multipart/form-data"  method ='post'  action="http://127.0.0.1:200/image">
+        <form  enctype="multipart/form-data"  method ='post'  action="/image">
             <input type="file" name="file" id="file">
         </form>
         <input type="button" value="提交" class="putart" @click="put">
@@ -23,7 +23,7 @@
                 let form = new FormData();
                 form.append('image',$file);
                 putimage({
-                    url:'http://127.0.0.1:2000/image',
+                    url:'/image',
                     method:'post',
                     data:form,
                     headers:{ 'Content-Type': 'multipart/form-data' }
@@ -35,14 +35,8 @@
                     art.head_img = res.data
                     console.log(art);
                     putArt(art).then(res=>{
-                        let code  = parseInt(res)
-                        if(code === 0)
-                        {
-                            alert("发表失败")
-                        }
-                        else{
-                            alert("发表成功")
-                        }
+                        window.alert('success')
+                        console.log('返回数据',res.data);
                     })
                 })
 
@@ -53,7 +47,7 @@
                 let form = new FormData();
                 form.append('image',$file);
                putimage({
-                    url:'http://127.0.0.1:2000/image',
+                    url:'/image',
                     method:'post',
                     data:form,
                     headers:{ 'Content-Type': 'multipart/form-data' }

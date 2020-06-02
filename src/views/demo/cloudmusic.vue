@@ -76,6 +76,9 @@
                     this.Audio.src = res.data.data[0].url
 
                     this.Audio.play()
+                    this.Audio.end(
+                        this.Audio.play()
+                    )
                 })
                 if(preId !==0){
                     this.isflesh = false
