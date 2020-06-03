@@ -3,7 +3,7 @@
     <div class="canvas">
         <div class="colorBlank"><div class="penColor" v-for="item in colorArray" :style="color(item)" @click="changePen(item)"></div></div>
         <canvas id="canva"></canvas>
-        <div class="bgc"><div class="bgcColor" v-for="item in bgcArray" :style="color(item)" @click="changeBgc(item)"></div></div>
+
     </div>
 </template>
 

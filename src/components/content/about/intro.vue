@@ -1,6 +1,7 @@
 <template>
     <div >
-        <div v-for="item in demoList" class="demo"> <a @click="todemo(item.demoPath)">{{item.name}}</a></div>
+        <div  class="demo"> <a @click="todemo('/canvas')">html简单画布(按下s建下载)</a></div>
+        <div  class="demo"> <a href="http://49.235.121.158:70" target="_blank">简单网易云接口Demo</a></div>
     </div>
     
 </template>
@@ -16,10 +17,7 @@
         },
         data(){
             return {
-                demoList:[
-                    {name:'html简单画布(按下s建下载)',demoPath:'/canvas'},
-                    {name:'网易云Demo',demoPath:'/cloudMusic'}
-                ]
+
             }
         }
     }
