@@ -2,7 +2,7 @@
   <div id="app">
 
       <load-ing v-if="isLoad" > </load-ing>
-    <nav-bar > </nav-bar>
+    <nav-bar  class="appNav"> </nav-bar>
 
     <router-view @loaded="changeLoad"></router-view>
 
@@ -49,5 +49,10 @@ export default {
 </script>
 
 <style>
+    @media screen and (max-width: 900px){
+        .appNav{
+            display: none;
+        }
+      }
 @import "assets/css/base.css";
 </style>

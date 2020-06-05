@@ -1,8 +1,8 @@
 <template>
     <div>
-
-        <indexhead/>
-        <motto/>
+        <mobbile-head></mobbile-head>
+        <indexhead class="inHead"/>
+        <motto class="motto"/>
 
         <show-art :list="list.artlist"  />
 
@@ -15,11 +15,12 @@
 
 <script>
 
-    import indexhead from '@/components/conmon/indexhead/myhead'
-    import motto from '@/components/content/motto/motto'
-    import showArt from '@/components/content/showArt/showArt'
+    import indexhead from '@/components/conmon/indexhead/myhead';
+    import motto from '@/components/content/motto/motto';
+    import showArt from '@/components/content/showArt/showArt';
     import {getart,total} from "../../network/admin";
-    import myButton from '@/components/conmon/sButton/sButton'
+    import myButton from '@/components/conmon/sButton/sButton';
+    import mobbileHead from "../../components/conmon/indexhead/mobbileHead";
     export default {
         name: "index",
         components:{
@@ -27,6 +28,7 @@
             motto,
             showArt,
             myButton,
+            mobbileHead
 
         },
         data(){
@@ -79,5 +81,14 @@
 </script>
 
 <style scoped>
+@media screen and (max-width: 900px){
+    .inHead{
+        display: none;
+    }
+    .motto{
+        margin: 10px auto;
+        height: auto;
+    }
 
+}
 </style>
