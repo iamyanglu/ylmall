@@ -1,15 +1,21 @@
 <template>
 
  <div class="allIntr">
-     <div class="openIntr">
 
-
-         <img src="../../../assets/img/open.png" height="20" width="20" @click="showIntr" /></div>
      <div v-if="isMobbile" class="introMobbile">
-         myself intro
-
+         <div class="imgPro">
+             <img src="../../../assets/img/pro.jpg" height="640" width="640"/>
+         </div>
+         <div class="mainPro">
+             <div>Yanglu`s 博客</div>
+             <div>
+                 <router-link v-for="item in linkList" :to="item.link">{{item.name,item.link}}</router-link>
+             </div>
+         </div>
      </div>
- </div>
+
+         </div>
+
 </template>
 
 <script>
@@ -20,19 +26,15 @@
                     let h = document.documentElement.clientHeight;
                     let w = document.documentElement.clientWidth;
                     let intr = document.querySelector('.introMobbile')
-                    console.log('hhh',h);
-                    intr.style.height = h +'px';
+
+                    intr.style.height = h/2 +'px';
                     intr.style.width = w/2 + 'px'
-                    intr.style.left= (-w)+'px'
                 },
-            showIntr(){
-                let intr = document.querySelector('.allIntr')
-                intr.style.transform='translateX(0)'
-            }
         },
         data(){
             return{
-               isMobbile:true
+               isMobbile:true,
+                linkList:[{name:'首页',link:"/index"},{name:'demo',link:'/pro'}]
             }
         },
         created() {
@@ -47,31 +49,43 @@
 <style scoped>
   @media screen and (max-width: 900px){
       .allIntr{
-          transform: translateX(-100%) ;
-          border:1px solid black;
-          position: absolute;
+          width: 100%;
+          position: relative;
+
       }
       .introMobbile{
-
-          width: 100%;
+          border: 1px solid #eeeeee;
+        position: absolute;
+          top:0;
+          left: -50%;
+         width: 50%;
          height: 100%;
-          background-color: red;
 
       }
-      .openIntr img{
-          position: absolute;
-          top: 0;
-          right: -20px;
+      .imgPro{
+          width: 100%;
+          height: 50%;
+            display: flex;
+          justify-content: center;
+
+
       }
+      .imgPro img{
 
 
+            margin: 20px ;
+            width: 60px;
+            height: 60px;
 
+            border-radius: 50%;
+        }
+      .mainPro{
+          text-align: center;
+      }
   }
   @media screen and (min-width: 900px){
-      .introMobbile{
+      .allIntr{
           display: none;
       }
   }
-
-
 </style>

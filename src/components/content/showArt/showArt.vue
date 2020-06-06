@@ -40,14 +40,12 @@
 <style scoped>
     @media screen and (max-width: 900px){
         .artItemF{
-            background-color: #eeeeee;
             width: 100%;
         }
 
     }
     @media screen and (min-width: 900px){
         .artItemF{
-
 
             width: 100%;
         }

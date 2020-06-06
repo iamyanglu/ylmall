@@ -1,9 +1,11 @@
 <template>
     <div class="motto_mid">
 
-        <div class="main_motto" >
+        <div>
             剑气纵横三万里，一剑光寒十九州
+
         </div>
+
 
 
     </div>
@@ -22,21 +24,29 @@
 </script>
 
 <style scoped>
-.motto_mid{
-    margin: 20px;
-    width: 100%;
-    height: 130px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-    .main_motto{
-        width: 80%;
-        height: 70px;
-        background-color: #eeeeee;
-        text-align: center;
-        line-height: 70px;
-        color: lightsalmon;
+    @media screen and (max-width: 900px){
+        .motto_mid{
+            display: none;
+        }
+    }
+    @media screen and (min-width: 900px){
+        .motto_mid{
+
+            line-height: 80px;
+            margin: 20px;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .motto_mid div{
+            text-align: center;
+            width: 80%;
+            background-color: #eeeeee;
+
+        }
+
     }
 
 

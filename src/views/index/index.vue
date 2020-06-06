@@ -1,10 +1,11 @@
 <template>
-    <div>
-        <mobbile-head></mobbile-head>
+    <div class="index">
+        <small-utl  @showSide="showSide" class="utlImg"></small-utl>
+        <mobbile-head class="mobbile"></mobbile-head>
         <indexhead class="inHead"/>
         <motto class="motto"/>
 
-        <show-art :list="list.artlist"  />
+        <show-art :list="list.artlist" class="artList" />
 
 
         <my-button   @getmoreart="getArt"  :totalNum="totalart" :artNum="nowartNum"></my-button>
@@ -21,6 +22,9 @@
     import {getart,total} from "../../network/admin";
     import myButton from '@/components/conmon/sButton/sButton';
     import mobbileHead from "../../components/conmon/indexhead/mobbileHead";
+    import smallUtl from "../../components/conmon/indexhead/smallUtl";
+    import  {uniformSpeed} from "../../myfunJs/my";
+
     export default {
         name: "index",
         components:{
@@ -28,7 +32,8 @@
             motto,
             showArt,
             myButton,
-            mobbileHead
+            mobbileHead,
+            smallUtl
 
         },
         data(){
@@ -36,6 +41,8 @@
                 list:{page:0,artlist:[]},
                 isLoad:true,
                 totalart:0,
+                isStart:true
+
 
             }
         },
@@ -45,6 +52,31 @@
             }
         },
         methods:{
+            showSide(){
+
+                let w = document.documentElement.offsetWidth;
+                w= parseInt(w/2)
+                let intr = document.querySelector('.mobbile');
+                let shArt = document.querySelector('.artList')
+                let img = document.querySelector('.utlImg')
+                if(this.isStart)
+                {
+                    uniformSpeed(shArt,w,'marginLeft')
+                    uniformSpeed(intr,w,'left')
+                    uniformSpeed(img,w,'marginLeft')
+                    this.isStart = false
+                }
+                else{
+
+                    uniformSpeed(shArt,0,'marginLeft')
+                    uniformSpeed(intr,0,'left')
+                    uniformSpeed(img,0,'marginLeft')
+                    this.isStart = true
+
+                }
+
+1
+            },
 
             getArt(){ // 拿到6篇文章
                 getart(this.list.page).then(res=>{
@@ -85,10 +117,15 @@
     .inHead{
         display: none;
     }
-    .motto{
-        margin: 10px auto;
-        height: auto;
+    .inHead{
+        overflow-x: hidden;
     }
 
+
+}
+@media screen and (min-width: 900px){
+    .index{
+        overflow-x: hidden;
+    }
 }
 </style>
