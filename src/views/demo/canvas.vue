@@ -49,7 +49,8 @@
             initCnavas(){
                 this.canvas = document.querySelector('canvas')
                 this.canvas.width = document.documentElement.offsetWidth
-                this.canvas.height = document.documentElement.offsetHeight
+                this.canvas.height = document.documentElement.clientHeight
+
                 this.ctx = this.canvas.getContext('2d')
 
 
@@ -68,6 +69,7 @@
                 }
                 else{
                     window.onmousedown=(e)=>{
+
                         this.ctx.beginPath()
                         paint = true;
                         starPoint={x:e.offsetX,y:e.offsetY}
@@ -82,6 +84,7 @@
                         }
                     }
                     window.onmouseup=()=>{
+                        console.log(this.canvas);
                         paint=false
                     }
                 }

@@ -9,7 +9,7 @@
          <div class="mainPro">
              <div>Yanglu`s 博客</div>
              <div>
-                 <router-link v-for="item in linkList" :to="item.link">{{item.name,item.link}}</router-link>
+                 <router-link v-for="item in linkList" :to="item.link" class="jumpMobbile">{{item.name,item.link}}</router-link>
              </div>
          </div>
      </div>
@@ -51,10 +51,11 @@
       .allIntr{
           width: 100%;
           position: relative;
-
+          height: 100%;
+          border: 1px solid #eeeeee;
       }
       .introMobbile{
-          border: 1px solid #eeeeee;
+
         position: absolute;
           top:0;
           left: -50%;
@@ -64,7 +65,7 @@
       }
       .imgPro{
           width: 100%;
-          height: 50%;
+          height: 100%;
             display: flex;
           justify-content: center;
 
@@ -81,6 +82,15 @@
         }
       .mainPro{
           text-align: center;
+      }
+      .jumpMobbile{
+
+          display: block;
+          margin-top: 5px;
+          width: 100%;
+          height: 20px;
+          line-height: 20px;
+          font-size: 14px;
       }
   }
   @media screen and (min-width: 900px){

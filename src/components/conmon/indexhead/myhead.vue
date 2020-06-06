@@ -57,7 +57,7 @@
         data(){
             return{
                 name:"Yanglu`s 博客",
-                stu:"私人领",
+                stu:"私人领地",
                 email:"邮箱地址:499339182@qq.com",
                 skilllist:'技术栈 ：html,css,js 使用 vue-cli进行vue前端开发.掌握 vuex ，vueRouter，promise，axios，掌握基本es6语法和简单高阶函数，' +
                     'webpack基本打包知识,使用node中express进行简单api编写，掌握node操作mongodb基本知识.'
